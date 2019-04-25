@@ -4,7 +4,7 @@
 
 // classes
 
-class Miner
+class Clicker
 {
 	constructor()
 	{
@@ -20,9 +20,9 @@ class Miner
 
 	click()
 	{
-		dust += this.get_production_value();
-		dust_produced += this.get_production_value();
-		renew_dust();
+		cookies += this.get_production_value();
+		cookies_produced += this.get_production_value();
+		renew_cookies();
 	}
 
 	get_production_value()
@@ -32,16 +32,16 @@ class Miner
 
 	improve()
 	{
-		if(dust >= this.price)
+		if(cookies >= this.price)
 		{
-			dust -= this.price;
+			cookies -= this.price;
 			this.level += 1;
 			this.price *= 2;
 			this.renew_display();
 		}
 		else
 		{
-			alert("Not enough obsidian dust!");
+			alert("Not enough dust!");
 		}
 	}
 
@@ -85,7 +85,7 @@ class Building
 		this.area.append(this.level_display);
 		this.area.append(document.createElement("br"));
 
-		this.area.append(document.createTextNode("Dust mined per Second: "));
+		this.area.append(document.createTextNode("Dust per Second: "));
 		this.area.append(this.productivity_display);
 		this.area.append(document.createElement("br"));
 
@@ -107,9 +107,9 @@ class Building
 	
 	improve()
 	{
-        	if(dust >= this.get_price())
+        	if(cookies >= this.get_price())
         	{
-        		dust -= this.get_price();
+        		cookies -= this.get_price();
         		this.level += 1;
         		altogether_productivity += this.productivity;
         		this.renew_display();
@@ -117,7 +117,7 @@ class Building
         	}
         	else
         	{
-			alert("Not enough obsidian dust!");
+			alert("Not enough dust!");
 		}
 	}
 
@@ -137,8 +137,8 @@ class Building
 
 	produce()
 	{
-		dust += this.get_production_value();
-		dust_produced += this.get_production_value();
+		cookies += this.get_production_value();
+		cookies_produced += this.get_production_value();
 	}
 	
 	get_production_value()
@@ -149,59 +149,59 @@ class Building
 
 // functions
 
-function renew_dust()
+function renew_cookies()
 {
-	dust_display.innerHTML = dust;
-	dust_produced_display.innerHTML = dust_produced;
+	cookies_display.innerHTML = cookies;
+	cookies_produced_display.innerHTML = cookies_produced;
     
-	if(this.dust_produced >= 200 && miner_enabled == 0) 
+	if(this.cookies_produced >= 200 && bakery_enabled == 0) 
 	{
-		miner.set_visible();
-		miner_enabled = 1;
+		bakery.set_visible();
+		bakery_enabled = 1;
         
 	}
-	if(this.dust_produced >= 2000 && factory_enabled == 0)
+	if(this.cookies_produced >= 2000 && factory_enabled == 0)
 	{
 		factory.set_visible(); 
 		factory_enabled = 1;
 	}
-	if(this.dust_produced >= 20000 && cookie_tesla_enabled == 0)
+	if(this.cookies_produced >= 20000 && cookie_tesla_enabled == 0)
 	{
 		cookie_tesla.set_visible();
 		cookie_tesla_enabled = 1;
 	}
 
-	if(this.dust_produced >= 200000 && cookie_gigant_enabled == 0) 
+	if(this.cookies_produced >= 200000 && cookie_gigant_enabled == 0) 
 	{
 		cookie_gigant.set_visible(); 
 		cookie_gigant_enabled = 1;
 	}
-        dust_display.innerHTML = dust;
-	dust_produced_display.innerHTML = dust_produced;
+        cookies_display.innerHTML = cookies;
+	cookies_produced_display.innerHTML = cookies_produced;
 }
 
 // commands and (global) variables
 
-var dust = 0;
-var dust_produced = 0;
+var cookies = 0;
+var cookies_produced = 0;
 var altogether_productivity = 0; // counts productivity of buildings except clicker
 
-var dust_display = document.getElementById("dust");
-var dust_produced_display = document.getElementById("dust_produced");
+var cookies_display = document.getElementById("cookies");
+var cookies_produced_display = document.getElementById("cookies_produced");
 
 var buildings = document.getElementById("buildings");
 
-miner_enabled = 0;
+bakery_enabled = 0;
 factory_enabled = 0;
 cookie_tesla_enabled = 0;
 cookie_gigant_enabled = 0;
 
-clicker = new Miner();
-baker = new Building("Drill", 1, 20);
+clicker = new Clicker();
+baker = new Building("Miner", 1, 20);
 baker.set_visible();
-bakery = new Building("Obsidian Pressuriser", 10, 200);
-factory = new Building("Recycler", 100, 2000);
+bakery = new Building("Drill", 10, 200);
+factory = new Building("Impact Dust Smasher", 100, 2000);
 cookie_tesla = new Building("Hoverdrill", 1000, 20000);
-cookie_gigant = new Building("Fusion Explosives", 10000, 200000);
+cookie_gigant = new Building("Fusion Detonator", 10000, 200000);
 
-setInterval(renew_dust, 500);
+setInterval(renew_cookies, 500);
