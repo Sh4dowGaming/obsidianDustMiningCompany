@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Obsidian Dust Mining Company</title>
+  <style>
+    .header {
+      backround-color: plum;
+      padding: 25px;
+      text-align: center;
+      font-size: 25pt;
+      width: 100%;
+      height: 25%;
+    }
+     .title {
+       font-size: 14pt;
+       text-align: center;
+       color: mustard;
+    }
+  </style>
+</head>
+	<body>
+                <div class="header">
+                <div style ="color: plum;">
+                  Obsidian Dust Mining Company<br/>
+                  An idle clicker about mining obsidian dust.
+                </div>
+                <div class="title">               
+                 Click the button to mine.
+                </div>
+		<b>Obsidian Dust: <span id="dust"></span></b><br>
+		Total Dust Mined: <span id="dust_produced"></span><br>
+		<button onclick="clicker.click();">Mine!</button><br><br>
+
+		Mining MAchine Level: <span id="clicker_level"></span><br>
+		Production: <span id="clicker_productivity"></span><br>
+		Improvement Price: <span id="clicker_price"></span><br>
+		<button onclick="clicker.improve();">Improve</button><br><br>
+
+		<hr><br>
+		<span id="buildings"></span>
+
+		<script src="maindust.js"></script>
+	</body>
+</html>
