@@ -85,7 +85,7 @@ class Building
 		this.area.append(this.level_display);
 		this.area.append(document.createElement("br"));
 
-		this.area.append(document.createTextNode("Calculations per Second: "));
+		this.area.append(document.createTextNode("Dust mined per Second: "));
 		this.area.append(this.productivity_display);
 		this.area.append(document.createElement("br"));
 
